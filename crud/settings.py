@@ -55,7 +55,7 @@ ROOT_URLCONF = 'crud.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'icbf',
         'USER': 'postgres',
-        'PASSWORD': 'clave8375',
+        'PASSWORD': 'gorossy0987',
         'HOST': '127.0.0.1',
         'DATABASE_PORT': '5432'
 
