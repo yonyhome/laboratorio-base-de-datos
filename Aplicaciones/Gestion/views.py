@@ -7,7 +7,11 @@ def inicio(request):
     contexto =  {
         'Padres':Padres
     }
-    return render(request,'index.html', contexto)
+    return render(request,'padre.html', contexto)
+
+def menu(request):
+    return render (request, 'menu.html')
+
 def crearPadre(request):
     if request.method =='GET':
         form = PadreForm()
@@ -21,7 +25,7 @@ def crearPadre(request):
         }
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('padre')
     return render(request,'crear_Padre.html', contexto)
 
 def editarpadre(request,id):
@@ -38,10 +42,10 @@ def editarpadre(request,id):
         }
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('padre')
     return render(request,'crear_padre.html',contexto)
 
 def eliminarpadre(request,id):
     padre = Padre.objects.get(id = id)
     padre.delete()
-    return redirect('index')
+    return redirect('padre')
