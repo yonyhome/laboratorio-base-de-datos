@@ -48,8 +48,7 @@
 <body>
     <form method="POST">
         {% csrf_token %}
-        <p>Nombre del padre</p>
-        {{form.nom}}
+        {{form.as_p}}
         <button type="submit">Crear</button>
     </form>
     

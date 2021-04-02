@@ -61,6 +61,7 @@
             <tr>
                 <th>id</th>
                 <th>Nombre</th>
+                <th>Opcion</th>
             </tr>
         </thead>
         <tbody>
@@ -68,11 +69,12 @@
             <tr>
                 <td>{{padre.id}}</td>
                 <td>{{padre.nom}}</td>
+                <td><a href="{%url 'editar_padre' padre.id %}">Editar</a> <a href="{%url 'eliminar_padre' padre.id %}"> Eliminar</a> </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    
+    <a href="{%url 'crear_padre' %}">Insertar padre</a>
     
 </body>
 </html>

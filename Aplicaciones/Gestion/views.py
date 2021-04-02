@@ -22,7 +22,26 @@ def crearPadre(request):
         if form.is_valid():
             form.save()
             return redirect('index')
-        
-    
-    
     return render(request,'crear_Padre.html', contexto)
+
+def editarpadre(request,id):
+    padre = Padre.objects.get(id = id)
+    if request.method =='GET':
+        form = PadreForm(instance = padre)
+        contexto = {
+            'form':form
+        }
+    else:
+        form =PadreForm(request.POST,instance = padre)
+        contexto = {
+            'form':form
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request,'crear_padre.html',contexto)
+
+def eliminarpadre(request,id):
+    padre = Padre.objects.get(id = id)
+    padre.delete()
+    return redirect('index')
