@@ -9,13 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     
     <title>Document</title>
-    
 </head>
 <body>
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Editar</button>
-    </form>
+    </form> 
 </body>
 </html>

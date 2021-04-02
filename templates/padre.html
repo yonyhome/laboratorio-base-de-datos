@@ -42,28 +42,19 @@
 </head>
 <body>
     
-    <form action="hijo.html" method="get">
-        <p>ID: <input type="number" name="id"></p>
-        <p>Nombre: <input type="text" name="nombre" size="40"></p>
-        
-        <p>
-          <input type="submit" value="Insertar">
-          <input type="submit" value="Actualizar">
-          <input type="submit" value="Borrar">
-        </p>
-        
-    </form>
-    <form>
-        
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Crear</button>
     </form>
     <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Nombre</th>
-                <th>Opcion</th>
-            </tr>
-        </thead>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
         <tbody>
             {% for padre in Padres %}
             <tr>
@@ -74,7 +65,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{%url 'crear_padre' %}">Insertar padre</a>
     <a href="{%url 'menu' %}">Regresar al menu</a>
     
 </body>

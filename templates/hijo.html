@@ -1,34 +1,75 @@
 <html>
-    <head>
-    <meta charset="utf-8">
-    <title>MEDICOS</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="crud/style.css">
-    </head>
-    <body>
-        <form action="hijo.html" method="get">
-            <p>ID: <input type="number" name="id"></p>
-            <p>Nombre: <input type="text" name="nombre" size="40"></p>
-            <p>Hijo de: <input type="number" name="hd"></p>
-            
-            <p>
-              <input type="submit" value="Insertar">
-              <input type="submit" value="Actualizar">
-            </p>
-        </form>
-        <form class="vistatabla"  >
-            <table>
-                  <thead>
-                    <tr>
-                      <th><strong>ID</strong></th>
-                      <th><strong>NOMBRE</strong></th>
-                      <th><strong>HIJO DE</strong></th>
-                      <th><P> <input type="submit" value="DELETE"></P></th>
-                    
-                    </tr>
-                  </thead>
-                </table>
-      
-          </form>
-    </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>MEDICOS</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="crud/style.css">
+  <style type="text/css">
+    table {
+    width: 100%;
+    float:right;
+    border: 1px solid #000;
+    background-color: #2CBEF3;
+    border-collapse: collapse;
+    margin:150px auto;
+    width: 800px;
+    cursor: pointer;
+    margin-right: 80px;
+    }
+    th, td {
+        font-family: 'Roboto', sans-serif;
+        width: 25%;
+        text-align: left;
+        padding: 5px;
+        border-bottom: 0.5px solid #000;
+    }
+    thead {
+        color: #fff;
+        background-color: rgba(174, 245, 255, 0.5);
+        border-bottom: 2px solid #000;
+        padding: 10px 0;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    
+
+</style>
+</head>
+
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Crear</button>
+</form>
+  <form class="vistatabla">
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Hijo de</th>
+          <th>Opcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hijo in Hijos %}
+        <tr>
+          <td>{{hijo.id}}</td>
+          <td>{{hijo.nom}}</td>
+          <td>{{hijo.hijode}}</td>
+          <td><a href="{%url 'editar_hijo' hijo.id %}">Editar</a> <a href="{%url 'eliminar_hijo' hijo.id %}">
+              Eliminar</a> </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+  <a href="{%url 'menu' %}">Regresar al menu</a>
+    
+</body>
+
 </html>
