@@ -1,7 +1,79 @@
 
-<form method="POST">
-    {% csrf_token %}
-    <p>Nombre del padre</p>
-    {{form.nom}}
-    <button type="submit">Crear</button>
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
+    <title>Document</title>
+    <style type="text/css">
+        table {
+        width: 100%;
+        float:right;
+        border: 1px solid #000;
+        background-color: #2CBEF3;
+        border-collapse: collapse;
+        margin:150px auto;
+        width: 800px;
+        cursor: pointer;
+        margin-right: 80px;
+        }
+        th, td {
+            font-family: 'Roboto', sans-serif;
+            width: 25%;
+            text-align: left;
+            padding: 5px;
+            border-bottom: 0.5px solid #000;
+        }
+        thead {
+            color: #fff;
+            background-color: rgba(174, 245, 255, 0.5);
+            border-bottom: 2px solid #000;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        form {
+            float: left;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Nombre del padre</p>
+        {{form.nom}}
+        <button type="submit">Crear</button>
+    </form>
+    
+    
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for padre in Padres %}
+                <tr>
+                    <td>{{padre.id}}</td>
+                    <td>{{padre.nom}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    
+    
+    
+</body>
+</html>
