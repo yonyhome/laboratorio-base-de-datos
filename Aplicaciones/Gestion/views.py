@@ -4,7 +4,7 @@ from .forms import PadreForm,HijoForm
 from django.db.models import Count
 
 def inicio(request):
-    Padres = Padre.objects.all()   #select * from persona
+    Padres = Padre.objects.all()  #select * from persona
     if request.method =='GET':
         form = PadreForm()
         contexto = {
@@ -61,19 +61,13 @@ def crearPadre(request):
 
 def editarpadre(request,id):
     padre = Padre.objects.get(id = id)
-    if request.method =='GET':
-        form = PadreForm(instance = padre)
-        contexto = {
-            'form':form
-        }
-    else:
-        form =PadreForm(request.POST,instance = padre)
-        contexto = {
-            'form':form
-        }
+    form = PadreForm(instance=padre)
+    if request.method =='POST':
+        form = PadreForm(request.POST, instance=padre)
         if form.is_valid():
             form.save()
             return redirect('padre')
+    contexto = {'form':form}
     return render(request,'crear_padre.html',contexto)
 
 def eliminarpadre(request,id):

@@ -1,3 +1,33 @@
-{%for padre in Padres%}
-{{padre.id}} {{padre.nom}} <a href="{%url 'consultar_padre' padre.id %}">seleccionar</a>
-{%endfor%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre del Padre</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for padre in Padres %}
+                <tr>
+                    <td>{{padre.id}}</td>
+                    <td>{{padre.nom}}</td>
+                    <td><a href="{%url 'consultar_padre' padre.id %}">seleccionar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{%url 'menu' %}">Regresar al menu</a>
+</body>
+</html>
+
+
+

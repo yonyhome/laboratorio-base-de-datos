@@ -1,5 +1,30 @@
-{%for c in cantidad%}
-{{c.id}}
-{{c.nom}}
-{{c.num_hijos}}
-{%endfor%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numero de hijos por padre</title>
+</head>
+<body>
+    <table title="Numero de hijos por padre" >
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Numero de hijos</th>
+            </tr>
+        </thead>
+            <tbody>
+                {%for c in cantidad%}
+                <tr>
+                    <td>{{c.id}}</td>
+                    <td>{{c.nom}}</td>
+                    <td>{{c.num_hijos}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{%url 'menu' %}">Regresar al menu</a>
+</body>
+</html>
