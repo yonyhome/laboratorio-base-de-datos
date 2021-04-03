@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Padre,Hijo
 from .forms import PadreForm,HijoForm
+from django.db.models import Count
 
 def inicio(request):
     Padres = Padre.objects.all()   #select * from persona
@@ -125,18 +126,40 @@ def consulta_1(request):
         }
     return render(request,'consulta_1.html',contexto)
 
-def consulta_2(request):
-    return render(request,'consulta_2.html')
 
-def consulta_3(request):
-    return render(request,'consulta_3.html')
-
-def consulta_4(request):
-    return render(request,'consulta_4.html')
+def cant_hijos(request):
+    cantidad = Padre.objects.annotate(num_hijos=Count('hijo'))
+    contexto = {
+     'cantidad' : cantidad
+    }
+    return render(request,'consulta_4.html', contexto)
 
 def consulta_padre(request, id):
-    hijodepadre = Hijo.objects.get(id = this.id)
+    hijodepadre = Hijo.objects.filter(hijode__pk = id)
     contexto = {
         'hijodepadre': hijodepadre
     }
     return render(request, 'hijo_de_padre.html', contexto)
+
+def padre_sin_hijo(request):
+       #padresolo = Hijo.objects.filter(hijode__pk = p.id)
+       #if padresolo == None:
+
+    lista= Padre.objects.filter(hijo__isnull=True)
+    contexto = {
+        'lista': lista
+    }
+    return render(request, 'consulta_2.html', contexto)
+
+def hijo_sin_padre(request):
+    #hijosolo = Hijo.objects.filter(hijode__pk,null=True)
+    hijosolo= Hijo.objects.filter(hijode__pk__isnull = True)
+    contexto = {
+        'hijosolo': hijosolo
+    }
+    return render(request, 'consulta_3.html', contexto)
+
+
+
+
+
