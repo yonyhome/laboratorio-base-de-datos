@@ -4,7 +4,7 @@ from .forms import PadreForm,HijoForm
 from django.db.models import Count
 
 def inicio(request):
-    Padres = Padre.objects.all()  #select * from persona
+    Padres = Padre.objects.all().order_by('id')  #select * from persona
     if request.method =='GET':
         form = PadreForm()
         contexto = {
@@ -22,7 +22,7 @@ def inicio(request):
             return redirect('padre')
     return render(request,'padre.html', contexto)
 def hijo(request):
-    Hijos = Hijo.objects.all()
+    Hijos = Hijo.objects.all().order_by('id')
     if request.method =='GET':
         form = HijoForm()
         contexto = {
@@ -114,7 +114,7 @@ def eliminarHijo(request, id):
     return redirect('hijo')
 
 def consulta_1(request):
-    Padres = Padre.objects.all()
+    Padres = Padre.objects.all().order_by('id')
     contexto = {
         'Padres':Padres,
         }
@@ -122,7 +122,7 @@ def consulta_1(request):
 
 
 def cant_hijos(request):
-    cantidad = Padre.objects.annotate(num_hijos=Count('hijo'))
+    cantidad = Padre.objects.annotate(num_hijos=Count('hijo')).order_by('id')
     contexto = {
      'cantidad' : cantidad
     }
@@ -139,7 +139,7 @@ def padre_sin_hijo(request):
        #padresolo = Hijo.objects.filter(hijode__pk = p.id)
        #if padresolo == None:
 
-    lista= Padre.objects.filter(hijo__isnull=True)
+    lista= Padre.objects.filter(hijo__isnull=True).order_by('id')
     contexto = {
         'lista': lista
     }
@@ -147,7 +147,7 @@ def padre_sin_hijo(request):
 
 def hijo_sin_padre(request):
     #hijosolo = Hijo.objects.filter(hijode__pk,null=True)
-    hijosolo= Hijo.objects.filter(hijode__pk__isnull = True)
+    hijosolo= Hijo.objects.filter(hijode__pk__isnull = True).order_by('id')
     contexto = {
         'hijosolo': hijosolo
     }
