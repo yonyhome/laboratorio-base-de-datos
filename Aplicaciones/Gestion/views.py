@@ -117,3 +117,26 @@ def eliminarHijo(request, id):
     hijo = Hijo.objects.get(id = id)
     hijo.delete()
     return redirect('hijo')
+
+def consulta_1(request):
+    Padres = Padre.objects.all()
+    contexto = {
+        'Padres':Padres,
+        }
+    return render(request,'consulta_1.html',contexto)
+
+def consulta_2(request):
+    return render(request,'consulta_2.html')
+
+def consulta_3(request):
+    return render(request,'consulta_3.html')
+
+def consulta_4(request):
+    return render(request,'consulta_4.html')
+
+def consulta_padre(request, id):
+    hijodepadre = Hijo.objects.get(id = this.id)
+    contexto = {
+        'hijodepadre': hijodepadre
+    }
+    return render(request, 'hijo_de_padre.html', contexto)

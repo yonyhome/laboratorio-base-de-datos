@@ -1,0 +1,3 @@
+{%for padre in Padres%}
+{{padre.id}} {{padre.nom}} <a href="{%url 'consultar_padre' padre.id %}">seleccionar</a>
+{%endfor%}
