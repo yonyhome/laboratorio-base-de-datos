@@ -1,5 +1,5 @@
 
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Registrar_padre</title>
     
 </head>
 <body>
-    <form method="POST">
+    <form class="datosrelleno" method="POST">
+        <hr color="blue" size=3>
+        <td>INGRESAR UN NUEVO PADRE</td>
+        <hr color="blue" size=3>
+        <td><br></td>
+        <td><br></td>
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Editar</button>
+        <td>ID<br></td>
+        {{form.id}}
+        <td><br></td>
+        <td><br></td>
+        <td>NOMBRE:<br></td>
+        {{form.nom}}
+        <td><br></td>
+        <td><br></td>
+        <button  type="submit">CREAR REGISTRO</button>
+        <hr color="blue" size=3>
     </form>
 </body>
 </html>

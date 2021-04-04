@@ -1,9 +1,16 @@
 
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
   text-align: center;
+  background-image: url('/static/img/fondo.jpg');
+  background-repeat: no-repeat;
+  background-size: 1366px 768px;
+  background-position: top;
+  background-attachment: fixed;
+  
 }
 
 
@@ -49,8 +56,15 @@ tr:hover td{
   background-color: #9FF3E7;
   color: white;
 }
-
-
+ul.horizontal{
+  margin:0;
+  padding:0;
+}
+ul.horizontal li{
+  display:block;
+  float:left;
+  padding:0 10px;
+  }
 input[type="submit"] {
   padding: 10px;
   color: #fff;
@@ -86,6 +100,7 @@ img.imagenes{
   margin: 10px auto;
   margin-left: 10px;
 }
+
 .transparencia{
   background-color: rgba(174, 245, 255, 0.5);
   float: left;

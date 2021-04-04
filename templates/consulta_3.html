@@ -1,4 +1,35 @@
-{%for h in hijosolo%}
-{{h.id}}
-{{h.nom}}
-{%endfor%}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>consulta_3</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    </head>
+    <body>
+        <header>
+            <a href="">LISTADO DE HIJOS SIN PADRES</a>
+            <a href="{%url 'menu' %}" style="text-align: right; display: inline-block; width: 100%; ">Regresar al menu</a>
+          </header>
+        <table>
+            <thead>
+              <tr>
+                <th>ID </th>
+                <th>NOMBRE</th>
+                <th>EDITAR</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for l in hijosolo%}
+                <tr>
+                    <td>{{l.id}}</td>
+                    <td>{{l.nom}}</td>
+                    <td><a href="{%url 'editar_hijo' l.id %}">Editar o agregar padre</a></td>
+            
+                </tr>
+                {%endfor%}   
+                    
+            </tbody>
+          </table>
+    </body>
+</html>

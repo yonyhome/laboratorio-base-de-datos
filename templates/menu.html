@@ -1,22 +1,47 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <title>Document</title>
 </head>
-<body>
-    <ol>
-        <li><a href="{%url 'hijo' %}">CRUD tabla HIJO</a></li>
-        <li><a href="{%url 'padre' %}">CRUD tabla PADRE</a></li>
-        <li>Consultas</li>
-        <ul>
+<body >
+    <header>
+        <a href="">SISTEMA DE INFORMACION (ICBF)</a>
+    </header>
+    <ul>
+        <form class="datosrelleno">
+            <li><a href="{%url 'hijo' %}"><p>CRUD tabla HIJO</p></a></li>
+        </form>
+    </ul>
+    <ul>
+        <form class="datosrelleno">
+            <li><a href="{%url 'padre' %}"><p>CRUD tabla PADRE</p> </a></li>
+        </form>
+    </ul>
+    <br>
+    <ul>
+        <form class="datosrelleno">
             <li><a href="{%url 'consulta_1'%}">CONSULTA 1. Hijos de un padre seleccionado</a></li>
+        </form>
+    </ul>
+    <ul>
+        <form class="datosrelleno">
             <li><a href="{%url 'consulta_2'%}">CONSULTA 2. Padres sin hijos</a></li>
+        </form>
+    </ul>  
+        
+        <form class="datosrelleno">
             <li><a href="{%url 'consulta_3'%}">CONSULTA 3. Hijos sin padres</a></li>
+        </form>      
+        <form class="datosrelleno">
             <li><a href="{%url 'consulta_4'%}">CONSULTA 4. Padres con el numero de hijos</a></li>
-        </ul>
-    </ol>
+        </form>    
+          
+    
+    
 </body>
 </html>

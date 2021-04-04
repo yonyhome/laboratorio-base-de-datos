@@ -1,49 +1,39 @@
+{%load static%}
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>MEDICOS</title>
+  <title>Hijos</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="crud/style.css">
-  <style type="text/css">
-    table {
-    width: 100%;
-    float:right;
-    border: 1px solid #000;
-    background-color: #2CBEF3;
-    border-collapse: collapse;
-    margin:150px auto;
-    width: 800px;
-    cursor: pointer;
-    margin-right: 80px;
-    }
-    th, td {
-        font-family: 'Roboto', sans-serif;
-        width: 25%;
-        text-align: left;
-        padding: 5px;
-        border-bottom: 0.5px solid #000;
-    }
-    thead {
-        color: #fff;
-        background-color: rgba(174, 245, 255, 0.5);
-        border-bottom: 2px solid #000;
-        padding: 10px 0;
-        margin-bottom: 10px;
-        width: 100%;
-        text-align: center;
-    }
-    
-    
-
-</style>
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  
 </head>
 
 <body>
-  <form method="POST">
+  <header>
+    <a href="">LISTADO DE NIÑOS REGISTRADO EN LA BASE DE DATOS</a>
+    <a href="{%url 'menu' %}" style="text-align: right; display: inline-block; width: 100%; ">Regresar al menu</a>
+  </header>
+  <form class = "datosrelleno" method="POST">
+    <hr color="blue" size=3>
+    <td>Ingresar un nuevo niño</td>
+    <hr color="blue" size=3>
+    <td><br></td>
+    <td><br></td>
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Crear</button>
+    <td>ID<br></td>
+    {{form.id}}
+    <td><br></td>
+    <td><br></td>
+    <td>NOMBRE:<br></td>
+    {{form.nom}}
+    <td><br></td>
+    <td>HIJO DE:<br></td>
+    {{form.hijode}}
+    <td><br></td>
+    <td><br></td>
+    <button  type="submit">CREAR REGISTRO</button>
+    <hr color="blue" size=3>
 </form>
   <form class="vistatabla">
     <table>
@@ -68,7 +58,6 @@
       </tbody>
     </table>
   </form>
-  <a href="{%url 'menu' %}">Regresar al menu</a>
     
 </body>
 

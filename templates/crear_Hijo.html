@@ -1,4 +1,4 @@
-
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,14 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Registrar_HIJO</title>
 </head>
 <body>
-    <form method="POST">
+    <header>
+        <a href="">SISTEMA DE INFORMACION (ICBF) EDITE O INGRESE UN NUEVO NIÑO </a>
+        <a href="{%url 'menu' %}" style="text-align: right; display: inline-block; width: 100%; ">Regresar al menu</a>
+      </header>
+    <form class = "datosrelleno" method="POST">
+        <hr color="blue" size=3>
+        <td>EDITAR EL REGISTRO DE: </td>
+        <hr color="blue" size=3>
+        <td><br></td>
+        <td><br></td>
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Editar</button>
-    </form> 
+        <td>ID<br></td>
+        {{form.id}}
+        <td><br></td>
+        <td><br></td>
+        <td>NOMBRE:<br></td>
+        {{form.nom}}
+        <td><br></td>
+        <td>HIJO DE:<br></td>
+        {{form.hijode}}
+        <td><br></td>
+        <td><br></td>
+        <button  type="submit">EDITAR REGISTRO</button>
+        <hr color="blue" size=3>
+    </form>
 </body>
 </html>

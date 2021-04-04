@@ -97,7 +97,7 @@ def crearHijo(request):
         if form.is_valid():
             form.save()
             return redirect('hijo')
-    return render(request,'crear_Padre.html', contexto)
+    return render(request,'crear_Hijo.html', contexto)
 def editarHijo(request,id):
     hijo = Hijo.objects.get(id = id)
     if request.method =='GET':
