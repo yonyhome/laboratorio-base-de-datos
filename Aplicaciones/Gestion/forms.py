@@ -4,7 +4,7 @@ from .models import Padre,Hijo
 class PadreForm(forms.ModelForm):
     class Meta:
         model = Padre
-        fields = ('id','nom')
+        fields = '__all__'
 
 class HijoForm(forms.ModelForm):
     class Meta:
